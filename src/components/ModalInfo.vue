@@ -33,7 +33,6 @@ export default {
   },
   mounted(){
     this.getUserInfo(this.user.id)
-    console.log(this.allInfo)   
   },
   components: {
     Modal

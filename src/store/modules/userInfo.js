@@ -14,7 +14,6 @@ export default {
     },
     mutations:{
         showUserInfo(state, userInfo) {
-           // console.log(userInfo);
             state.Info = userInfo;
         }
     },

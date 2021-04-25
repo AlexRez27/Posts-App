@@ -2,7 +2,7 @@
   <form @submit.prevent="submit">
     <input value="111" type="text" placeholder="title" v-model="title" />
     <input value="222" type="text" placeholder="body" v-model="body" />
-    <button type="submit">Create Post</button>
+    <button class="post__link" type="submit">Create Post</button>
     <hr />
   </form>
 </template>
@@ -37,7 +37,6 @@ export default {
         userId: 0,
       });
       this.title = this.body = "";
-      console.log(this.$store.state.posts);
       this.$router.push({ name: "Home" });
     },
   },

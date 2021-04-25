@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <!-- <router-link to="/PostDetail"> -->
-    <Loader v-if="loading" />
+  <div class="container">
+    <div>
+      <router-link to="/PostForm"> <button class="post__link">Create Post</button> </router-link>
+      <router-link to="/UserTable"> <button class="post__link">Table of users</button> </router-link>
+    </div> <Loader v-if="loading" />
     <div v-else class="post">
       <Posts v-for="(post, i) in allPosts" :key="i + 1" :post="allPosts[i]" />
     </div>
@@ -10,10 +12,6 @@
       :total="totalPages"
       @page-change="pageChangeHandler"
     ></sliding-pagination>
-    <router-link to="/PostForm"> <button class="post__link">Create Post</button> </router-link>
-    <router-link to="/UserTable"> <button class="post__link">Table of users</button> </router-link>
-    <!-- <router-view /> -->
-    <!-- </router-link> -->
   </div>
 </template>
 
@@ -38,6 +36,7 @@ export default {
       loading: true,
       postsCount: 0,
       isMobile: false,
+      BreakPoint: 768,
     };
   },
   computed: mapGetters(["allPosts"]),
@@ -68,7 +67,7 @@ export default {
     },
     onResize() {
       window.onresize = () => {
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < this.BreakPoint) {
           this.isMobile = true;
           this.lazyLoad();
         } else {
@@ -83,17 +82,11 @@ export default {
   mounted() {
     this.loading = false;
     this.onResize();
-    //console.log(this.allPosts);
-
     this.getPosts({});
-    // if (this.$route.params.value) {
-    //   this.createPost(this.$route.params.value);
-    // }
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < this.BreakPoint) {
       this.isMobile = true;
       this.lazyLoad();
     }
-    console.log(this.allPosts);
   },
 };
 </script>

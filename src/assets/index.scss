@@ -1,7 +1,7 @@
 /* @import "~materialize-css/dist/css/materialize.min.css";
 @import "~vue-sliding-pagination/dist/style/vue-sliding-pagination.css"; */
-@import "mixins";
-@import "extends";
-@import "fonts";
-@import "post";
-@import "userTable";
+@import "./styles/mixins";
+@import "./styles/extends";
+@import "./styles/fonts";
+@import "./styles/post";
+@import "./styles/userTable";
