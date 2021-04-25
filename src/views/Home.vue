@@ -53,10 +53,7 @@ export default {
     },
     lazyLoad() {
       window.onscroll = () => {
-        let bottomOfWindow =
-          document.documentElement.scrollTop + window.innerHeight ===
-          document.documentElement.offsetHeight;
-        if (bottomOfWindow && this.isMobile) {
+        if (document.documentElement.scrollTop + window.innerHeight >= document.body.scrollHeight && this.isMobile) {
           const params = {
             pageNumber: 0,
             limit: this.allPosts.length + 10,
@@ -80,6 +77,7 @@ export default {
     },
   },
   mounted() {
+    console.log(1)
     this.loading = false;
     this.onResize();
     this.getPosts({});
