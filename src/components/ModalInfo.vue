@@ -1,43 +1,46 @@
 <template>
-  <div >
+  <div>
     <modal name="userinfo">
       <div class="basic-modal">
-        <h2 class="title"> {{user.name}} </h2>
-        <p><b>Company Name:</b> {{allInfo.name}}  </p>
-        <p><b>Company catch phrase:</b> {{ allInfo.catchPhrase }} </p>
-        <button class="button post__link" type="button" @click="close">Close Modal</button>
+        <h2 class="title">{{ user.name }}</h2>
+        <p><b>Company Name:</b> {{ allInfo.name }}</p>
+        <p><b>Company catch phrase:</b> {{ allInfo.catchPhrase }}</p>
+        <button class="button post__link" type="button" @click="close">
+          Close Modal
+        </button>
       </div>
     </modal>
   </div>
 </template>
 
 <script>
-import { Modal, POP } from 'vuex-modal'
+import { Modal, POP } from "vuex-modal";
 import { mapMutations, mapGetters, mapActions } from "vuex";
 
 export default {
-  props:{
-      user:{
-        type: Object,
-        required: true
-      }
+  name: "modalInfo",
+  props: {
+    user: {
+      type: Object,
+      required: true,
+    },
   },
   computed: mapGetters(["allInfo"]),
   methods: {
-    close () {
-      this.$store.dispatch(POP)
-      this.$parent.isModal = false
+    close() {
+      this.$store.dispatch(POP);
+      this.$parent.isModal = false;
     },
-     ...mapMutations(["showUserInfo"]),
-     ...mapActions(["getUserInfo"])
+    ...mapMutations(["showUserInfo"]),
+    ...mapActions(["getUserInfo"]),
   },
-  mounted(){
-    this.getUserInfo(this.user.id)
+  mounted() {
+    this.getUserInfo(this.user.id);
   },
   components: {
-    Modal
-  }
-}
+    Modal,
+  },
+};
 </script>
 
 <style scoped>

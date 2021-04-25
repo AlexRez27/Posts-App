@@ -15,7 +15,6 @@ export default {
       userId: Number,
     },
   },
-  mounted() {},
   methods: {
     openDetails(e) {
       this.$router.push({ name: "PostDetail", params: { value: e } });

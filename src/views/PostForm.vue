@@ -21,6 +21,7 @@ input {
 <script>
 import { mapMutations } from "vuex";
 export default {
+  name: "postForm",
   data() {
     return {
       title: "",
@@ -30,14 +31,15 @@ export default {
   methods: {
     ...mapMutations(["createPost"]),
     submit() {
-      this.createPost({
+      const post = {
         title: this.title,
         body: this.body,
         id: Date.now(),
         userId: 0,
-      });
+      };
+      this.createPost(post);
       this.title = this.body = "";
-      this.$router.push({ name: "Home" });
+      this.$router.push({ name: "Home", params: { value: post } });
     },
   },
 };

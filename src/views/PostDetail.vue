@@ -21,12 +21,12 @@
 <script>
 import { mapGetters, mapMutations, mapActions } from "vuex";
 export default {
+  name: "PostDetail",
   data() {
     return {
       postInfo: {},
     };
   },
-  name: "PostDetail",
   computed: mapGetters(["allDetails", "allComments"]),
   created() {
     this.showDetails(this.$route.params.value);

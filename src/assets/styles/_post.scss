@@ -12,7 +12,7 @@
     margin: 60px auto;
     /* width: 400px; */
     display: flex;
-    justify-content: start;
+    justify-content: center;
     flex-wrap: wrap;
     &__item {
         border: 1px solid #ccc;
@@ -58,8 +58,18 @@
 nav {
     background-color: transparent;
 }
-.c-sliding-pagination__list {
-    @include _768 {
-        display: none;
+.c-sliding-pagination {
+    &__list {
+        @include _768 {
+            display: none;
+        }
+        &-element {
+            padding: 0 !important;
+        }
+    }
+    &__page {
+        padding: 0.6rem;
+        display: block;
+        font-size: 20px;
     }
 }

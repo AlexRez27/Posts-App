@@ -37,6 +37,7 @@ import ModalInfo from "@/components/ModalInfo";
 import { PUSH } from "vuex-modal";
 
 export default {
+  name: "userTable",
   data() {
     return {
       user: {

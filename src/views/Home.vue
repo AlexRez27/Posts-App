@@ -1,11 +1,16 @@
 <template>
   <div class="container">
     <div>
-      <router-link to="/PostForm"> <button class="post__link">Create Post</button> </router-link>
-      <router-link to="/UserTable"> <button class="post__link">Table of users</button> </router-link>
-    </div> <Loader v-if="loading" />
+      <router-link to="/PostForm">
+        <button class="post__link">Create Post</button>
+      </router-link>
+      <router-link to="/UserTable">
+        <button class="post__link">Table of users</button>
+      </router-link>
+    </div>
+    <Loader v-if="loading" />
     <div v-else class="post">
-      <Posts v-for="(post, i) in allPosts" :key="i + 1" :post="allPosts[i]" />
+      <Posts v-for="(post, i) in Posts" :key="i + 1" :post="Posts[i]" />
     </div>
     <sliding-pagination
       :current="currentPage"
@@ -37,28 +42,40 @@ export default {
       postsCount: 0,
       isMobile: false,
       BreakPoint: 768,
+      Posts: [],
     };
   },
   computed: mapGetters(["allPosts"]),
   methods: {
     ...mapActions(["getPosts"]),
-    ...mapMutations(["createPost"]),
+    ...mapMutations(["createPost", "showPosts"]),
     pageChangeHandler(selectedPage) {
       this.currentPage = selectedPage;
       const params = {
         pageNumber: (this.currentPage - 1) * 10,
       };
-      this.getPosts(params);
+      this.setPosts(params);
       this.loading = false;
+      console.log(this.Posts);
+    },
+    async setPosts(params) {
+      await this.getPosts(params);
+      for (let i = 0; i < this.allPosts.length; i++) {
+        this.Posts.unshift(this.allPosts[i]);
+      }
     },
     lazyLoad() {
       window.onscroll = () => {
-        if (document.documentElement.scrollTop + window.innerHeight >= document.body.scrollHeight && this.isMobile) {
+        if (
+          document.documentElement.scrollTop + window.innerHeight >=
+            document.body.scrollHeight &&
+          this.isMobile
+        ) {
           const params = {
             pageNumber: 0,
             limit: this.allPosts.length + 10,
           };
-          this.getPosts(params);
+          this.setPosts(params);
         }
       };
     },
@@ -70,20 +87,20 @@ export default {
         } else {
           this.isMobile = false;
         }
-        if (this.$route.params.value) {
-          this.createPost(this.$route.params.value);
-        }
       };
     },
   },
   mounted() {
-    console.log(1)
+    this.setPosts({});
     this.loading = false;
     this.onResize();
-    this.getPosts({});
     if (window.innerWidth < this.BreakPoint) {
       this.isMobile = true;
       this.lazyLoad();
+    }
+    if (this.$route.params.value) {
+      console.log(this.Posts);
+      this.Posts.push(this.$route.params.value);
     }
   },
 };
