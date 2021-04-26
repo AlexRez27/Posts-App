@@ -14,11 +14,9 @@ export default {
     },
     getters: {
         allDetails(state) {
-            // return state.contactInfo
             return state.postInfo
         },
         allComments(state) {
-            // return state.contactInfo
             return state.comments
         }
     },

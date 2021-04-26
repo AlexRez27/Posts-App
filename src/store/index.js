@@ -16,9 +16,6 @@ export default new Vuex.Store({
     showPosts(state, posts) {
       state.posts = posts
     },
-    createPost(state, newPost) {
-      state.posts.push(newPost)
-    }
   },
   actions: {
     async getPosts({ commit }, { pageNumber = 0, limit = 10 }) {

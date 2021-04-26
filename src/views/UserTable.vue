@@ -63,8 +63,6 @@ export default {
   },
   mounted() {
     this.getUsers();
-    // this.username.push(this.allUsers.username);
-    // this.id.push(this.allUsers.id);
   },
 };
 </script>

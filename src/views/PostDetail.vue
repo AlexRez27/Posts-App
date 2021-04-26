@@ -3,7 +3,7 @@
     <h2 class="post__title">Post Info</h2>
     <h3>{{ postInfo.title }}</h3>
     <p>{{ postInfo.body }}</p>
-    <p><b>Comments:</b></p>
+    <h4>Comments:</h4>
     <ul>
       <li v-for="comment of allComments" :key="comment.id">
         <b>{{ comment.name }}</b>

@@ -35,7 +35,6 @@ export default {
   },
   data() {
     return {
-      // ...
       currentPage: 1,
       totalPages: 10,
       loading: true,
@@ -48,13 +47,14 @@ export default {
   computed: mapGetters(["allPosts"]),
   methods: {
     ...mapActions(["getPosts"]),
-    ...mapMutations(["createPost", "showPosts"]),
+    ...mapMutations(["showPosts"]),
     pageChangeHandler(selectedPage) {
       this.currentPage = selectedPage;
       const params = {
         pageNumber: (this.currentPage - 1) * 10,
       };
-      this.setPosts(params);
+      this.getPosts(params);
+      this.Posts = this.allPosts;
       this.loading = false;
       console.log(this.Posts);
     },

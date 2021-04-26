@@ -3,20 +3,8 @@
     <input value="111" type="text" placeholder="title" v-model="title" />
     <input value="222" type="text" placeholder="body" v-model="body" />
     <button class="post__link" type="submit">Create Post</button>
-    <hr />
   </form>
 </template>
-
-<style scoped>
-input {
-  display: block;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-</style>
 
 <script>
 import { mapMutations } from "vuex";
@@ -37,10 +25,18 @@ export default {
         id: Date.now(),
         userId: 0,
       };
-      this.createPost(post);
       this.title = this.body = "";
       this.$router.push({ name: "Home", params: { value: post } });
     },
   },
 };
 </script>
+
+<style lang="scss">
+form input {
+  padding-left: 10px !important;
+  &::placeholder {
+    color: #000;
+  }
+}
+</style>

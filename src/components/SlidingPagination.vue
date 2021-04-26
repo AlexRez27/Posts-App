@@ -16,13 +16,11 @@ export default {
   },
   data() {
     return {
-      // ...
       currentPage: 1,
       totalPages: 10,
     };
   },
   methods: {
-    // ...
     pageChangeHandler(selectedPage) {
       this.currentPage = selectedPage;
     },
@@ -30,10 +28,3 @@ export default {
 };
 </script> 
  
-<style lang="css">
-.pagination {
-}
-.page-item {
-}
-</style> 
-
