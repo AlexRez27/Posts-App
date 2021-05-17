@@ -1,4 +1,4 @@
-# web-port-test-task
+# Posts-App
 
 ## Project setup
 ```
