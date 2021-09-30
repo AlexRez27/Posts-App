@@ -6,6 +6,8 @@
 4. Add a page with a table of all users (display username, phone, email, website in the table) + add an INFO button opposite each user
 5. After clicking on INFO, a modal window should open with information about the user's company (name, catchPhrase)
 # web-port-test-task
+=======
+# Posts-App
 
 ## Project setup
 ```
